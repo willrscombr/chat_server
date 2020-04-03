@@ -1,20 +1,20 @@
-const express = require('express')
-const app = express()
-
+const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 5000;
 //routes
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-})
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
 
-//Listen on port 3000
-server = app.listen(3000)
+//Listen on port 5000
+server = app.listen(PORT);
 
 //socet.io instantiation
-const io = require("socket.io")(server)
+const io = require("socket.io")(server);
 
 //Listen on every connection
-io.on('connection', (socket) => {
-    socket.on('chat message', function (msg) {
-        console.log('message: ' + msg)
-    })
-})
+io.on("connection", (socket) => {
+  socket.on("chat message", function (msg) {
+    io.emit("chat message", msg);
+  });
+});

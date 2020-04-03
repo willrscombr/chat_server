@@ -2,10 +2,14 @@
   "name": "chat",
   "version": "1.0.0",
   "description": "Esse projeto tem como objetivo criar um server para chat",
+  "engines": {
+    "node": "12.x"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app"
+    "start": "node index",
+    "dev": "ndoe dev"
   },
   "author": "Dev7",
   "license": "ISC",
@@ -13,5 +17,9 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.2",
     "socket.io": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/willtecti/chat_server"
   }
 }
