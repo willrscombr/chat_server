@@ -11,10 +11,15 @@ server = app.listen(PORT);
 
 //socet.io instantiation
 const io = require("socket.io")(server);
-
+let messages = [];
 //Listen on every connection
 io.on("connection", (socket) => {
-  socket.on("chat message", function (msg) {
-    io.emit("chat message", msg);
+  console.log('userConected',socket.id);
+  socket.emit('previosMessage', messages);
+  
+  socket.on("sendmessage", function (data) {
+    messages.push(data);
+    io.emit("messages", data);
+    socket.broadcast.emit('receivedMessage',data);
   });
 });
