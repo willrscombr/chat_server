@@ -81,8 +81,9 @@
                 $('#m').val('');
                 return false;
             });
-            socket.on('sendMessage', function(msg){
-                            });
+            socket.on('receivedMessage', function(message){
+                renderMessage(message);
+            });
         });
     </script>
 </body>
